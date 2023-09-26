@@ -14,7 +14,7 @@ export class ContactForm extends Component {
     }
 
     handleAdd = event => {
-        event.prevventDefeault();
+        event.preventDefault();
         const { name, number } = this.state;
 
         this.props.onSubmit(name, number);
@@ -26,8 +26,8 @@ export class ContactForm extends Component {
         const { name, number } = this.state;
 
         return (
-            <div>
-                <form>
+            <div className={css.section}>
+                <form onSubmit={this.handleAdd} className={css.form}>
 
                     <label>
                         Name
@@ -39,6 +39,8 @@ export class ContactForm extends Component {
                             required
                             value={name}
                             placeholder="Contact name"
+                            className={css.formInput}
+                            onChange={this.handlerChange}
                         />
                     </label>
                     <label>
@@ -51,10 +53,12 @@ export class ContactForm extends Component {
                             required
                             value={number}
                             placeholder="Contact number"
+                            className={css.formInput}
+                            onChange={this.handlerChange}
                         />
                     </label>
 
-                    <button type="submit">Add contact</button>
+                    <button type="submit" className={css.add}>Add contact</button>
 
                 </form>
             </div>

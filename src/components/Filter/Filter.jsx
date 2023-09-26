@@ -12,9 +12,11 @@ export class Filter extends Component {
     render() {
         return (
             <div>
-                <h3>Find contacts by name</h3>
+                <h3 className={css.filter}>Find contacts by name</h3>
                 <input
                     placeholder="Contact name"
+                    className={css.filterInput}
+                    onChange={this.filterContacts}
                 />
             </div>
         )

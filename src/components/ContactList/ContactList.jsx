@@ -1,7 +1,14 @@
 import PropTypes from "prop-types";
 import { Component } from "react";
+import css from "./ContactList.module.css";
 
 export class ContactList extends Component {
+
+    deleteContact = id => {
+        const { value } = id.target;
+        this.props.onClick(value);
+    }
+
     render() {
         const { contacts } = this.props;
 
@@ -9,10 +16,16 @@ export class ContactList extends Component {
             <ul>
                 {contacts.map(contact => {
                     return (
-                        <li>
-                            <p>{contact.name}</p>
-                            <p>{contact.number}</p>
-                            <button type="submit">Delete</button>
+                        <li key={contact.id} className={css.contactsItem}>
+                            <p className={css.contactsName}>{contact.name}</p>
+                            <p className={css.contactsNumber}>{contact.number}</p>
+                            <button
+                                type="submit"
+                                onClick={this.deleteContact}
+                                className={css.contactsButton}
+                            >
+                                Delete
+                            </button>
                         </li>
                     )
                 })}
