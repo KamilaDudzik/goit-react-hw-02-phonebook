@@ -1,10 +1,25 @@
 import PropTypes from "prop-types";
 import { Component } from "react";
+import css from "./ContactForm.module.css";
 
 export class ContactForm extends Component {
     state = {
         name: "",
         number: ""
+    }
+
+    handlerChange = event => {
+        const { name, value } = event.target;
+        this.setState({ [name]: value });
+    }
+
+    handleAdd = event => {
+        event.prevventDefeault();
+        const { name, number } = this.state;
+
+        this.props.onSubmit(name, number);
+
+        this.setState({ name: "", number: "" })
     }
 
     render() {
@@ -13,6 +28,7 @@ export class ContactForm extends Component {
         return (
             <div>
                 <form>
+
                     <label>
                         Name
                         <input
@@ -39,8 +55,13 @@ export class ContactForm extends Component {
                     </label>
 
                     <button type="submit">Add contact</button>
+
                 </form>
             </div>
         )
     }
+}
+
+ContactForm.propTypes = {
+    onSubmit: PropTypes.func.isRequired
 }
