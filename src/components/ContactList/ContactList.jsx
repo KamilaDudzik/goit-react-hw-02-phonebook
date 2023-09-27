@@ -23,6 +23,7 @@ export class ContactList extends Component {
                                 type="submit"
                                 onClick={this.deleteContact}
                                 className={css.contactsButton}
+                                value={contact.id}
                             >
                                 Delete
                             </button>
