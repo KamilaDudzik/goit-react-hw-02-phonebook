@@ -13,7 +13,7 @@ export class ContactList extends Component {
         const { contacts } = this.props;
 
         return (
-            <ul>
+            <ul className={css.contactsList}>
                 {contacts.map(contact => {
                     return (
                         <li key={contact.id} className={css.contactsItem}>
