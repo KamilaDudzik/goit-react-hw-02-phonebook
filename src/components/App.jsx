@@ -61,8 +61,7 @@ export class App extends Component {
         <ContactForm onSubmit={this.newContact} />
         <h2>Contacts</h2>
         <Filter onChange={this.filterContacts} />
-        <ContactList contacts={this.showContacts()} onClick={this.deleteContact}
-        />
+        {this.state.contacts.length > 0 && (<ContactList contacts={this.showContacts()} onClick={this.deleteContact} />)}
       </div>
     )
   }
